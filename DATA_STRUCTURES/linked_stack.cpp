@@ -1,16 +1,20 @@
 #include <iostream>
 using namespace std;
+struct element
+{
+    int v;
+};
 struct node
 {
     node *link;
-    int data;
+    element data;
 };
 typedef struct node *nodeptr;
 nodeptr top[10];
 void push(int i, int v)
 {
     nodeptr temp = (nodeptr)malloc(sizeof(node));
-    temp->data = v;
+    temp->data.v = v;
     if (!top[i])
     {
         temp->link = nullptr;
@@ -29,7 +33,7 @@ void display(int i)
     cout << "The stack " << i << " is: ";
     while (temp)
     {
-        cout << temp->data << " ";
+        cout << temp->data.v << " ";
         temp = temp->link;
     }
 }
@@ -42,7 +46,7 @@ int pop(int i)
         cout<<"\n Stack Empty Cannot POP ";
         exit(0);
     }
-    r=temp->data;
+    r=temp->data.v;
     top[i]=top[i]->link;
     free(temp);
     return r;
