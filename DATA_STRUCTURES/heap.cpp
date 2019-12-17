@@ -21,7 +21,7 @@ void insert(int v)
             heap[c]=heap[p];
             heap[p]=t;
             c=p;
-            p=c;
+            p=p/2;
         }
     }
 }
